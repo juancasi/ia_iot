@@ -1,0 +1,25 @@
+-------------------------
+https://www.luisllamas.es/controlar-arduino-con-python-y-la-libreria-pyserial/
+
+python -m pip install PySerial
+
+import serial, time
+arduino = serial.Serial('/dev/ttyUSB0', 9600)
+
+while True:
+    time.sleep(2)
+    rawString = arduino.readline()
+    print(rawString)
+    
+arduino.close()
+---------------------
+void setup() {
+	Serial.begin(9600);
+}
+
+void loop() {
+    int valor = analogRead(0);
+	Serial.println("{'sl':" + String(valor) + "}");
+	delay(1000);
+}
+
